@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { validateName, validatePhone } from '../utils/validators';
-import { createParticipant } from '../lib/supabase';
+import { createParticipant, checkCodeExists } from '../lib/supabase';
 import { generateUniqueCode } from '../utils/codeGenerator';
 import { Participant } from '../types';
 import QRCode from 'qrcode.react';
