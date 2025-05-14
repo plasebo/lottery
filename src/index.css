@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", 
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  background-color: #f3f4f6;
+  color: #1f2937;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  @apply scroll-smooth antialiased;
+}
+
+.dark {
+  color-scheme: dark;
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+@layer components {
+  .btn {
+    @apply px-5 py-2.5 text-sm font-medium rounded-lg shadow-sm transition-all duration-200 
+    focus:outline-none focus:ring-2 focus:ring-opacity-50 focus-visible:ring-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-300 active:bg-primary-800;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-white hover:bg-gray-100 text-gray-800 border border-gray-200 
+    focus:ring-gray-300 active:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700;
+  }
+
+  .btn-accent {
+    @apply btn bg-accent-500 hover:bg-accent-600 text-white focus:ring-accent-300 active:bg-accent-700;
+  }
+
+  .input {
+    @apply w-full p-3 bg-white border border-gray-300 rounded-lg shadow-sm 
+    focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+    dark:bg-gray-800 dark:border-gray-600 dark:text-white;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 
+    dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .lottery-ticket {
+    @apply relative p-6 bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg 
+    border-2 border-accent-300 overflow-hidden transition-all duration-300 hover:shadow-xl 
+    dark:from-gray-800 dark:to-gray-900 dark:border-accent-700;
+  }
+
+  .lottery-ticket::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-full bg-[radial-gradient(#4f46e510_1px,transparent_1px)] bg-[length:24px_24px] pointer-events-none;
+  }
+}
