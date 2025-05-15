@@ -16,6 +16,7 @@ export interface Database {
           name: string
           phone: string
           code: string
+          is_winner: boolean
         }
         Insert: {
           id?: number
@@ -23,6 +24,7 @@ export interface Database {
           name: string
           phone: string
           code: string
+          is_winner?: boolean
         }
         Update: {
           id?: number
@@ -30,6 +32,7 @@ export interface Database {
           name?: string
           phone?: string
           code?: string
+          is_winner?: boolean
         }
         Relationships: []
       }

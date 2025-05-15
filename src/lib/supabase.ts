@@ -46,3 +46,23 @@ export async function getParticipantByCode(code: string) {
   if (error) throw error;
   return data;
 }
+
+export async function getWinners() {
+  const { data, error } = await supabase
+    .from('participants')
+    .select('*')
+    .eq('is_winner', true)
+    .order('created_at', { ascending: true });
+  
+  if (error) throw error;
+  return data || [];
+}
+
+export async function setWinner(id: number) {
+  const { error } = await supabase
+    .from('participants')
+    .update({ is_winner: true })
+    .eq('id', id);
+  
+  if (error) throw error;
+}

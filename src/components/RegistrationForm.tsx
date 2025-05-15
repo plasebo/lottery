@@ -64,7 +64,9 @@ export function RegistrationForm() {
   };
 
   if (registeredParticipant) {
-    const statusUrl = `${window.location.origin}/status/${registeredParticipant.code}`;
+    // Get the base URL from the current location
+    const baseUrl = window.location.href.split('/').slice(0, 3).join('/');
+    const statusUrl = `${baseUrl}/status/${registeredParticipant.code}`;
     
     return (
       <div className="md:max-w-md w-full p-6 space-y-6">
@@ -94,7 +96,10 @@ export function RegistrationForm() {
           </div>
           
           <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
-            <div className="absolute transform rotate-45 bg-accent-500 text-white font-semibold text-xs py-1 right-[-35px] top-[20px] w-[170px] text-center">
+            <div
+  className="absolute transform rotate-45 bg-accent-500 text-white font-semibold text-xs py-1 w-[170px] text-center"
+  style={{ top: '10px', right: '-61px' }}
+>
               Good luck!
             </div>
           </div>

@@ -31,7 +31,7 @@ export function Layout({ children }: LayoutProps) {
                     <path d="m9 14 2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <span className="ml-3 font-bold text-xl text-gray-900 dark:text-white">Event Lottery</span>
+                <span className="ml-3 font-bold text-xl text-gray-900 dark:text-white">MNS Lottery</span>
               </Link>
             </div>
             
@@ -60,7 +60,7 @@ export function Layout({ children }: LayoutProps) {
                   to="/login" 
                   className={`${pathname === '/login' ? 'text-primary-600' : 'text-gray-700 hover:text-primary-600'} px-3 py-2 text-sm font-medium dark:text-gray-200 dark:hover:text-primary-400 transition-colors duration-150`}
                 >
-                  Admin Login
+                  Login
                 </Link>
               )}
             </nav>
@@ -126,7 +126,7 @@ export function Layout({ children }: LayoutProps) {
                 className={`${pathname === '/login' ? 'bg-primary-50 text-primary-700 dark:bg-gray-700 dark:text-primary-300' : 'text-gray-700 dark:text-gray-200'} block px-3 py-2 text-base font-medium`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                Admin Login
+                Login
               </Link>
             )}
           </div>
@@ -140,7 +140,7 @@ export function Layout({ children }: LayoutProps) {
       <footer className="bg-white dark:bg-gray-800 shadow-inner py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-            © {new Date().getFullYear()} Event Lottery App. All rights reserved.
+            © {new Date().getFullYear()} MNS Lottery. All rights reserved.
           </p>
         </div>
       </footer>

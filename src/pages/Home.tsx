@@ -11,6 +11,15 @@ export function Home() {
       <section className="min-h-[calc(100vh-200px)] py-12 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-4xl grid md:grid-cols-2 gap-12 items-center">
           <div>
+            <img 
+  src="https://cdn.jsdelivr.net/gh/mnsltd/mns-public@develop/logo-light.svg"
+  style={{ 
+    background: "#1f2937", 
+    padding: "12px", 
+    marginBottom: "24px", 
+    borderRadius: "12px" 
+  }}
+/>
             <h1 className="text-5xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
               <span className="text-primary-600 dark:text-primary-400">MNS Lottery</span> for DITEX 2025
             </h1>

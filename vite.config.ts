@@ -8,10 +8,10 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['lottery.svg', 'apple-touch-icon.png', 'favicon.ico'],
+      includeAssets: ['lottery.svg', 'apple-touch-icon.png', 'favicon.ico', 'https://cdn.jsdelivr.net/gh/mnsltd/mns-public@develop/logo-light.svg'],
       manifest: {
-        name: 'Event Lottery App',
-        short_name: 'Lottery App',
+        name: 'MNS Lottery App',
+        short_name: 'MNS Lottery App',
         description: 'Event Lottery Draw Application',
         theme_color: '#4F46E5',
         icons: [
