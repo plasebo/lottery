@@ -34,7 +34,7 @@ export function LoginForm() {
     <form onSubmit={handleSubmit} className="md:max-w-md w-full p-6 space-y-6 card">
       <h2 className="text-xl font-bold text-center text-gray-900 dark:text-white">Admin Login</h2>
       <p className="text-center text-gray-600 dark:text-gray-300 text-sm">
-        Access the lottery draw system
+        Access the Lucky Draw system
       </p>
       
       <div>

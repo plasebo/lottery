@@ -16,7 +16,7 @@ export function Status() {
   useEffect(() => {
     const loadData = async () => {
       if (!code) {
-        setError('No lottery code provided');
+        setError('No lucky code provided');
         setIsLoading(false);
         return;
       }
@@ -64,7 +64,7 @@ export function Status() {
               Participant Not Found
             </h2>
             <p className="text-gray-600 dark:text-gray-300">
-              {error || 'The lottery code you\'re looking for doesn\'t exist. Please check the code and try again.'}
+              {error || 'The lucky code you\'re looking for doesn\'t exist. Please check the code and try again.'}
             </p>
           </div>
         </div>
@@ -80,10 +80,10 @@ export function Status() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              DITEX 2025 Lottery Status
+              DITEX 2025 lucky Status
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Here are your lottery details and current draw status
+              Here are your lucky details and current draw status
             </p>
           </div>
 
@@ -148,7 +148,7 @@ export function Status() {
                       Draw Pending
                     </div>
                     <p className="text-gray-600 dark:text-gray-300">
-                      The lottery draw will take place at the end of DITEX 2025. Check back here to see if you've won!
+                      The lucky draw will take place at the end of DITEX 2025. Check back here to see if you've won!
                     </p>
                     <div className="mt-6 p-4 bg-primary-50 dark:bg-primary-900 rounded-lg border border-primary-200 dark:border-primary-700">
                       <p className="text-primary-800 dark:text-primary-200 text-sm">

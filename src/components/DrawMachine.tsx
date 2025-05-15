@@ -47,7 +47,7 @@ export function DrawMachine() {
       return;
     }
 
-    if (winners.length >= 5) {
+    if (winners.length >= 3) {
       toast.error('Maximum number of winners reached');
       return;
     }
@@ -130,7 +130,7 @@ export function DrawMachine() {
     <div className="min-h-[500px] flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-primary-600 dark:text-primary-400 mb-4">
-          MNS Lottery Draw
+          MNS Lucky Draw
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Ready to select our lucky winner? Click the button below to start the draw!
@@ -167,7 +167,7 @@ export function DrawMachine() {
           </div>
           
           {/* Controls */}
-          {winners.length < 5 && (
+          {winners.length < 3 && (
             <div className="flex justify-center">
               <button
                 onClick={startDraw}
@@ -208,7 +208,7 @@ export function DrawMachine() {
             {winners.map((winner, index) => (
               <div key={winner.id} className="lottery-ticket">
                 <div className="absolute top-4 right-4 bg-accent-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                  Winner #{index + 1}
+                  Winner (Day {index + 1})
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 dark:text-white">{winner.name}</h3>
                 <div className="mt-2 font-mono text-accent-600 dark:text-accent-400">Code: {winner.code}</div>
@@ -217,17 +217,6 @@ export function DrawMachine() {
           </div>
         </div>
       )}
-
-      {/* Instructions */}
-      <div className="mt-12 text-center max-w-2xl">
-        <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">How it works</h2>
-        <ol className="text-left space-y-3 text-gray-600 dark:text-gray-300 list-decimal pl-6">
-          <li>Click the "Start Draw" button to begin the random selection process</li>
-          <li>The lottery machine will randomly select and reveal a winning code</li>
-          <li>The winner's details will be displayed on screen</li>
-          <li>Contact the winner to arrange prize collection</li>
-        </ol>
-      </div>
     </div>
   );
 }

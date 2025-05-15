@@ -4,4 +4,5 @@ export interface Participant {
   phone: string;
   code: string;
   created_at: string;
+  is_winner: boolean;
 }

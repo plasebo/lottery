@@ -31,7 +31,7 @@ export function Layout({ children }: LayoutProps) {
                     <path d="m9 14 2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <span className="ml-3 font-bold text-xl text-gray-900 dark:text-white">MNS Lottery</span>
+                <span className="ml-3 font-bold text-xl text-gray-900 dark:text-white">MNS Lucky Draw</span>
               </Link>
             </div>
             
@@ -140,7 +140,7 @@ export function Layout({ children }: LayoutProps) {
       <footer className="bg-white dark:bg-gray-800 shadow-inner py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-gray-500 dark:text-gray-400">
-            © {new Date().getFullYear()} MNS Lottery. All rights reserved.
+            © {new Date().getFullYear()} MNS Lucky Draw. All rights reserved. | <a href="/wp-content/uploads/2024/07/DC0-MNS_Privacy-Notice.pdf" target="_blank">Privacy Notice</a>
           </p>
         </div>
       </footer>

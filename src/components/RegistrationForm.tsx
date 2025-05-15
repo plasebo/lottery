@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { validateName, validatePhone } from '../utils/validators';
-import { createParticipant, checkCodeExists } from '../lib/supabase';
+import { createParticipant, checkCodeExists, getWinners } from '../lib/supabase';
 import { generateUniqueCode } from '../utils/codeGenerator';
 import { Participant } from '../types';
 import QRCode from 'qrcode.react';
@@ -11,12 +11,30 @@ export function RegistrationForm() {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [winners, setWinners] = useState<Participant[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState<{ name: string | null; phone: string | null }>({
     name: null,
     phone: null,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [registeredParticipant, setRegisteredParticipant] = useState<Participant | null>(null);
+
+  useEffect(() => {
+    const loadWinners = async () => {
+      try {
+        const data = await getWinners();
+        setWinners(data);
+      } catch (error) {
+        console.error('Error loading winners:', error);
+        toast.error('Failed to check event status');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadWinners();
+  }, []);
 
   const validate = () => {
     const nameError = validateName(name);
@@ -63,6 +81,52 @@ export function RegistrationForm() {
     navigate('/');
   };
 
+  if (isLoading) {
+    return (
+      <div className="md:max-w-md w-full p-6 space-y-6">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-300">Checking event status...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (winners.length >= 5) {
+    return (
+      <div className="md:max-w-md w-full p-6 space-y-6">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Event Completed</h2>
+          <p className="text-gray-600 dark:text-gray-300">
+            The lucky draw event has ended. All winners have been selected.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-xl font-semibold text-gray-800 dark:text-white">Winners</h3>
+          {winners.map((winner, index) => (
+            <div 
+              key={winner.id} 
+              className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow border border-gray-200 dark:border-gray-700"
+            >
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">{winner.name}</p>
+                  <p className="text-sm font-mono text-primary-600 dark:text-primary-400">
+                    Code: {winner.code}
+                  </p>
+                </div>
+                <span className="bg-accent-500 text-white px-3 py-1 rounded-full text-sm">
+                  Winner #{index + 1}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (registeredParticipant) {
     // Get the base URL from the current location
     const baseUrl = window.location.href.split('/').slice(0, 3).join('/');
@@ -78,7 +142,7 @@ export function RegistrationForm() {
         </div>
         
         <div className="lottery-ticket p-6 transform transition-all animate-[pulse_2s_infinite]">
-          <div className="text-xs uppercase tracking-wider font-semibold text-primary-600 mb-2">Your Lottery Details</div>
+          <div className="text-xs uppercase tracking-wider font-semibold text-primary-600 mb-2">Your Lucky Draw Details</div>
           <h3 className="text-xl font-bold text-gray-800 dark:text-white">{registeredParticipant.name}</h3>
           <div className="text-gray-500 dark:text-gray-400 mt-1">{registeredParticipant.phone}</div>
           
@@ -97,9 +161,9 @@ export function RegistrationForm() {
           
           <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
             <div
-  className="absolute transform rotate-45 bg-accent-500 text-white font-semibold text-xs py-1 w-[170px] text-center"
-  style={{ top: '10px', right: '-61px' }}
->
+              className="absolute transform rotate-45 bg-accent-500 text-white font-semibold text-xs py-1 w-[170px] text-center"
+              style={{ top: '10px', right: '-61px' }}
+            >
               Good luck!
             </div>
           </div>
@@ -119,6 +183,8 @@ export function RegistrationForm() {
 
   return (
     <form onSubmit={handleSubmit} className="md:max-w-md w-full p-6 space-y-6">
+                  <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">Enter your details to receive a unique lucky code and stand a chance to win a free Java Training Course worth <span className="text-yellow-500 font-bold">Rs. 28,000</span></p>
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Full Name

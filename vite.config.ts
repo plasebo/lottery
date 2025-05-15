@@ -10,9 +10,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['lottery.svg', 'apple-touch-icon.png', 'favicon.ico', 'https://cdn.jsdelivr.net/gh/mnsltd/mns-public@develop/logo-light.svg'],
       manifest: {
-        name: 'MNS Lottery App',
-        short_name: 'MNS Lottery App',
-        description: 'Event Lottery Draw Application',
+        name: 'MNS Lucky Draw',
+        short_name: 'MNS Lucky Draw App',
+        description: 'Event Lucky Draw Application',
         theme_color: '#4F46E5',
         icons: [
           {
